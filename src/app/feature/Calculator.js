@@ -36,7 +36,7 @@ const NumGroup = styled.div`
   padding: 1rem;
   column-gap: 1rem;
   row-gap: 1rem;
-`
+`;
 
 const NumPad = styled.div`
   background-color: #0d9;
@@ -44,22 +44,23 @@ const NumPad = styled.div`
   align-items: stretch;
   justify-items: center;
   padding-top: 1rem;
-  
-`
+`;
 
-const numPadArr = ['AC', 'C', 'X', '/', 7, 8, 9, '+', 4, 5, 6, '-', 1, 2, 3, '+']
+const numPadArr = ["AC", "X", "/", "+", 7, 8, 9, "-", 4, 5, 6, "=", 1, 2, 3, 0];
 
 const Calculator = () => {
   const arrEq = useSelector((state) => state.inputReducer.arrEq);
   const dispatch = useDispatch();
 
   const handleInputPad = (eachNumPad) => {
-    if (typeof eachNumPad === 'number') {
-      dispatch(addNum(eachNumPad))
-    } else if (eachNumPad === 'AC') {
-      dispatch(ac())
+    console.log('data', arrEq, eachNumPad);
+
+    if (typeof eachNumPad === "number") {
+      
+    } else if (eachNumPad === "AC") {
+      dispatch(ac());
     }
-  }
+  };
 
   return (
     <div>
@@ -68,12 +69,12 @@ const Calculator = () => {
           <DisplayNum>{arrEq}</DisplayNum>
         </Display>
         <NumGroup>
-          {numPadArr.map(eachNumPad => {
+          {numPadArr.map((eachNumPad) => {
             return (
-              <NumPad
-                onClick={() => handleInputPad(eachNumPad)}
-              >{eachNumPad}</NumPad>
-            )
+              <NumPad onClick={() => handleInputPad(eachNumPad)}>
+                {eachNumPad}
+              </NumPad>
+            );
           })}
         </NumGroup>
       </Cal>
