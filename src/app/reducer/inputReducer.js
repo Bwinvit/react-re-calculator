@@ -8,7 +8,8 @@ const inputReducer = createSlice({
     },
     reducers: {
         addNum: (state, action) => {state.arrEq.push(action.payload)},
+        ac: (state) => {state.arrEq = []}
     }
 })
-export const {addNum} = inputReducer.actions
+export const {addNum, ac} = inputReducer.actions
 export default inputReducer.reducer
