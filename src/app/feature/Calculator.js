@@ -54,9 +54,15 @@ const Calculator = () => {
 
   const handleInputPad = (eachNumPad) => {
     console.log('data', arrEq, eachNumPad);
-
+  
     if (typeof eachNumPad === "number") {
-      
+      if (eachNumPad === 0) {
+        if (arrEq.length > 0 && arrEq[0] !== 0) {
+          dispatch(addNum(0))
+        }
+      } else {
+        dispatch(addNum(eachNumPad))
+      }
     } else if (eachNumPad === "AC") {
       dispatch(ac());
     }
